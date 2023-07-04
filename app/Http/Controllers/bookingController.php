@@ -21,7 +21,7 @@ class bookingController extends Controller
      */
     public function create()
     {
-        //
+        return view('form');
     }
 
     /**
@@ -29,7 +29,13 @@ class bookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Produk;
+        $data->phone = $request->phone;
+        $data->date = $request->bdate;
+        $data->people = $request->people;
+        $data->destination = $request->destination;
+        $data->save();
+        return redirect('produk');
     }
 
     /**
@@ -54,7 +60,13 @@ class bookingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $model = booking::find($id);
+        $model->phone = $request->phone;
+        $model->date = $request->date;
+        $model->people = $request->people;
+        $model->destination = $request->destination;
+        $model->save();
+        return redirect('isi');
     }
 
     /**
@@ -62,6 +74,8 @@ class bookingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $model = booking::find($id);
+        $model->delete();
+        return redirect('isi');
     }
 }

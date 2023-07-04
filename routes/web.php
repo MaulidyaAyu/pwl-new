@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\destinasiController;
+use App\Http\Controllers\bookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use App\Http\Controllers\destinasiController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('isi');
-// });
+Route::get('/form', function () {
+    return view('form');
+});
 Route::resource('/', destinasiController::class);
